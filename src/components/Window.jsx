@@ -57,6 +57,9 @@ class Window extends Component{
                                 <button type="button" onClick={this.maximizeWindow} className="w-2.5 h-2.5 bg-green-600 rounded-full"></button>
                             </div>
                         </div>
+                        <div className="relative min-h-0 flex-auto flex flex-col">
+                            {this.props.component}
+                        </div>
                     </div>
             </Rnd>
         );

@@ -1,8 +1,19 @@
 import { Component, Fragment } from "react";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Menu, Transition } from '@headlessui/react'
-import { brands, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+
+import { Menu, Transition } from '@headlessui/react';
+
+import { ReactComponent as TerminalIcon } from '../icons/terminal.svg';
+import { ReactComponent as ResumeIcon } from '../icons/resume.svg';
+import { ReactComponent as AppGridIcon } from '../icons/view_app_grid.svg';
+import { ReactComponent as WiFiSymbolic } from '../icons/wifi_symbolic.svg';
+import { ReactComponent as ShutDownSymbolic } from '../icons/shutdown_symbolic.svg';
+
 import Clock from "./InlineClock";
+
+
 
 class Taskbar extends Component{
     constructor(props)
@@ -22,7 +33,7 @@ class Taskbar extends Component{
                         <Menu as="div" className="flex items-center justify-start">
                             <div>
                                 <Menu.Button className="inline-flex justify-center w-full shadow-sm px-4 py-2 font-medium hover:text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                    <FontAwesomeIcon icon={brands('windows')} size="xl" />
+                                    <AppGridIcon className="h-10 w-10"/>
                                 </Menu.Button>
                             </div>
                             <Transition
@@ -53,16 +64,17 @@ class Taskbar extends Component{
                             </Transition>
                         </Menu>
                         <div className="flex justify-center items-center">
-                            <button type="button" onClick={(event)=>{event.preventDefault(); return this.props.openApplication(event,"terminal")}} className="px-5 py-5 m-1 h-15 w-15 bg-slate-800" name="terminal">
-                                <FontAwesomeIcon icon={solid('terminal')} size="xl" inverse/>
+                            <button type="button" onClick={(event)=>{event.preventDefault(); return this.props.openApplication(event,"terminal")}} className="px-5 py-5 m-1 h-15 w-15" name="terminal">
+                                <TerminalIcon className="h-10 w-10"/>
                             </button>
-                            <button type="button" onClick={(event)=>{event.preventDefault(); return this.props.openApplication(event,"resume")}} className="px-5 py-5 m-1 h-15 w-15 bg-slate-800" name="resume">
-                                <FontAwesomeIcon icon={solid('file-pdf')} size="xl" inverse/>
+                            <button type="button" onClick={(event)=>{event.preventDefault(); return this.props.openApplication(event,"resume")}} className="px-5 py-5 m-1 h-15 w-15" name="resume">
+                                <ResumeIcon className="h-10 w-10"/>
                             </button>
                         </div>
-                        <div className="flex justify-end items-end">
-                            <Clock/>
-                            
+                        <div className="flex justify-end items-end p-2">
+                            <ShutDownSymbolic className="h-5 w-5"/>
+                            <WiFiSymbolic className="h-5 w-5"/>
+                            <Clock className="h-5 w-5"/>
                         </div>
                     </div>
                 </div>

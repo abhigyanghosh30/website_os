@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./Waves\ Dark\ 6016x6016.jpg');
-  background-size:auto;
+  background-size:cover;
 }
 
 code {
