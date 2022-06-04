@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Taskbar from './components/Taskbar';
 import Window from './components/Window';
 import Terminal from './components/Terminal';
@@ -40,7 +40,6 @@ class App extends Component {
   {
 	return (
 	  <div className="App">
-		
 		{this.state.openApps.indexOf("terminal")>-1 && <Window closeWindow={this.closeWindow} openState={this.state.openApps.indexOf("terminal")} component={<Terminal/>} appName="terminal"/>}
 		{this.state.openApps.indexOf("resume")>-1 && <Window closeWindow={this.closeWindow} openState={this.state.openApps.indexOf("resume")} component={<Terminal/>} appName="resume"/>}
 		<Taskbar openApplication={this.openApplication}/>
