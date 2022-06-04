@@ -52,9 +52,9 @@ class Window extends Component{
                     <div className="relative w-full flex flex-col">
                         <div className="flex-none border-b border-slate-500/30">
                             <div className="flex items-center h-8 space-x-1.5 px-3">
-                                <button onClick={this.props.closeWindow} className="w-2.5 h-2.5 bg-red-600 rounded-full"></button>
-                                <button onClick={this.mininizeWindow} className="w-2.5 h-2.5 bg-yellow-600 rounded-full"></button>
-                                <button onClick={this.maximizeWindow} className="w-2.5 h-2.5 bg-green-600 rounded-full"></button>
+                                <button type="button" onClick={(event)=>{event.preventDefault();return this.props.closeWindow(event,this.props.appName)}} className="w-2.5 h-2.5 bg-red-600 rounded-full"></button>
+                                <button type="button" onClick={this.mininizeWindow} className="w-2.5 h-2.5 bg-yellow-600 rounded-full"></button>
+                                <button type="button" onClick={this.maximizeWindow} className="w-2.5 h-2.5 bg-green-600 rounded-full"></button>
                             </div>
                         </div>
                     </div>
