@@ -11,13 +11,25 @@ class Window extends Component{
                 width: 500,
                 height: 190,
         };
+        this.button_size={height:"1em",width:"1em"};
         this.maximizeWindow=this.maximizeWindow.bind(this);
         this.mininizeWindow=this.mininizeWindow.bind(this);
     }
     maximizeWindow(event)
     {
         event.preventDefault();
-        this.setState({x:0,y:0,height:window.innerHeight,width:window.innerWidth});
+        var def = this.state;
+        if(def.width===window.innerWidth && def.height===window.innerHeight){
+            this.setState({x: 150,
+            y: 205,
+            width: 500,
+            height: 190
+            });
+        }
+        else
+        {
+            this.setState({x:0,y:0,height:window.innerHeight,width:window.innerWidth});
+        }
     }
     mininizeWindow(event)
     {
@@ -48,19 +60,13 @@ class Window extends Component{
                         ...position,
                     });
                 }}
-                bounds="window" className="relative overflow-hidden shadow-xl flex bg-slate-800 dark:bg-slate-900/70 dark:backdrop-blur dark:ring-1 dark:ring-inset dark:ring-white/10">
-                    <div className="relative w-full flex flex-col">
-                        <div className="flex-none border-b border-slate-500/30">
-                            <div className="flex items-center h-8 space-x-1.5 px-3">
-                                <button type="button" onClick={(event)=>{event.preventDefault();return this.props.closeWindow(event,this.props.appName)}} className="w-2.5 h-2.5 bg-red-600 rounded-full"></button>
-                                <button type="button" onClick={this.mininizeWindow} className="w-2.5 h-2.5 bg-yellow-600 rounded-full"></button>
-                                <button type="button" onClick={this.maximizeWindow} className="w-2.5 h-2.5 bg-green-600 rounded-full"></button>
-                            </div>
-                        </div>
-                        <div className="relative min-h-0 flex-auto flex flex-col">
-                            {this.props.component}
-                        </div>
+                bounds="window" className="container-fluid bg-dark rounded">
+                    <div className="border-bottom border-white p-2">
+                        <button onClick={(event)=>{event.preventDefault();return this.props.closeWindow(event,this.props.appName)}} className="m-1 d-inline-block bg-danger rounded-circle" style={this.button_size}></button>
+                        <button onClick={this.mininizeWindow} className="m-1 d-inline-block bg-warning rounded-circle" style={this.button_size}></button>
+                        <button onClick={this.maximizeWindow} className="m-1 d-inline-block bg-success rounded-circle" style={this.button_size}></button>
                     </div>
+                    {this.props.component}
             </Rnd>
         );
     }

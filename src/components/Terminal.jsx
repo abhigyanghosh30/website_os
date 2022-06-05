@@ -13,7 +13,7 @@ class Terminal extends Component{
         event.preventDefault();
         console.log(this.state);
         this.setState((state,props)=>{
-            return {previous:state.previous.concat([state.command])};
+            return {previous:state.previous.concat(["[abhigyan.ghosh@researchweb.iiit.ac.in] $"+state.command]).concat(["zsh: command not found: "+state.command])};
         });
         this.setState({command:""});
         console.log(this.state);
@@ -27,26 +27,24 @@ class Terminal extends Component{
     }
     render(){
         return(
-            <div className="w-full relative flex-auto">
-                <div className="container flex min-h-full">
-                    <code className="flex-auto relative block pt-4 pb-4 px-4 text-slate-200">
-                    {
-                        this.state.previous.map((item,index,array)=>{
-                            return (<span className="block ml-0 text-left">
-                                {"[abhigyan.ghosh@researchweb.iiit.ac.in] $"+item}
-                                </span>
-                            );
-                        })
-                    }
-                    <p className="text-left">{"[abhigyan.ghosh@researchweb.iiit.ac.in] $"}
-                    <span className="inline text-left overflow-hidden">
-                        <form className="pl-1 inline text-left overflow-hidden" onSubmit={this.handleSubmit}>
-                            <input type="text" onChange={this.handleChange} value={this.state.command} className="bg-slate-800 focus:border-0 focus-visible:outline-none text-slate-200"></input>
+            <div className="container-fluid overflow-auto">
+                <div className="row text-white">
+                {
+                    this.state.previous.map((item,index,array)=>{
+                        return (<span className="text-left">
+                            {item}
+                            </span>
+                        );
+                    })
+                }
+                <div className="text-left">{"[abhigyan.ghosh@researchweb.iiit.ac.in] $"}
+                    <span className="inline text-left">
+                        <form className="pl-1 inline text-left" onSubmit={this.handleSubmit}>
+                            <input type="text" onChange={this.handleChange} value={this.state.command} className="bg-dark focus:border-0 focus-visible:outline-none text-slate-200"></input>
                             <input type="submit" hidden/>
                         </form>
                     </span>
-                    </p>
-                    </code>
+                </div>
                 </div>
             </div>
         );
